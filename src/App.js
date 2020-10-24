@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{ useState, useEffect } from 'react'
 import { fetchWeather } from './api/fetchWeather'
 import './App.css'
 export default function App() {
@@ -12,6 +12,14 @@ export default function App() {
             setQuery('')
         }
     }
+
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+            alert("geolocalisation no supported")
+         } else { 
+             console.log("geolocalisation supported")
+         }
+    }, [])
 
     return (
         <div className="main-container">
