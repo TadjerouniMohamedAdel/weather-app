@@ -20,7 +20,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "check-lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
+    "check-format": "prettier --check \"./src/**/*.{js,jsx,ts,ysx,json,css,scss,less,.md}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,ysx,json,css,scss,less,.md}\"",
+    "test-all": "yarn check-format && yarn check-lint && yarn test --watchAll=false --findRelatedTests && yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +43,29 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "yarn check-lint",
+      "yarn check-format",
+      "yarn format",
+      "yarn test --watchAll=false --findRelatedTests --bail"
     ]
   }
 }
