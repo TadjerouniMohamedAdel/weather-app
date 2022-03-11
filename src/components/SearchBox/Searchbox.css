@@ -1,0 +1,43 @@
+.searchbox {
+  width: 330px;
+  height: 48px;
+  margin: 10px 60px;
+  background: #ffffff;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  gap: 20px;
+  font-size: 14px;
+  border-radius: 0;
+  position: relative;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+  z-index: inherit;
+}
+.searchbox i {
+  font-size: 22px;
+  color: #000;
+}
+.searchbox input {
+  width: 230px;
+  border: none;
+  height: 100%;
+}
+.searchbox input:focus {
+  outline: none;
+}
+
+.searchbox .divider {
+  height: 65%;
+  border-left: 1px solid #ddd;
+}
+.searchbox button {
+  height: 100%;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: inherit;
+  border: none;
+}

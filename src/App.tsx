@@ -1,32 +1,42 @@
-// import { LatLngExpression } from 'leaflet';
-import React from 'react';
 import { LatLngExpression } from 'leaflet';
+import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import Searchbox from './components/SearchBox/Searchbox';
 
 const App: React.FC = () => {
   const [position, setPosition] = React.useState<LatLngExpression>([
     36.7449, 3.0289,
   ]);
 
-  React.useEffect(() => {
+  const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (val) => {
+          console.log(val);
           setPosition([val.coords.latitude, val.coords.longitude]);
         },
         (error) => {
           console.log(error);
-        }
+        },
+        { enableHighAccuracy: true, timeout: 4000, maximumAge: 0 }
       );
     } else {
       console.log('Geolocation is not supported by this browser.');
     }
+  };
+
+  React.useEffect(() => {
+    getCurrentLocation();
   }, []);
+
+  React.useEffect(() => {
+    console.log(position);
+  }, [position]);
 
   return (
     <div className="App">
       <MapContainer
-        center={[36.7312717, 3.0876783]}
+        center={position}
         zoom={13}
         style={{ height: '100vh', width: '100vw' }}
       >
@@ -36,14 +46,18 @@ const App: React.FC = () => {
         />
         <Marker position={position}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            A pretty CSS3 popup <br /> Easily customizable.
           </Popup>
         </Marker>
         <div
           style={{ zIndex: 30000, position: 'absolute' }}
           className="weather-searbox"
         >
-          <input type="text" placeholder="hello world" />
+          <Searchbox
+            type="text"
+            placeholder="Search for a location"
+            onChange={(e) => console.log(e.target.value)}
+          />
         </div>
       </MapContainer>
     </div>
