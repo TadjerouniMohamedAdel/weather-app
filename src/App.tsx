@@ -53,11 +53,7 @@ const App: React.FC = () => {
           style={{ zIndex: 30000, position: 'absolute' }}
           className="weather-searbox"
         >
-          <Searchbox
-            type="text"
-            placeholder="Search for a location"
-            onChange={(e) => console.log(e.target.value)}
-          />
+          <Searchbox type="text" placeholder="Search for a location" />
         </div>
       </MapContainer>
     </div>

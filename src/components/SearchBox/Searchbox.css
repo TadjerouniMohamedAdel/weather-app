@@ -18,6 +18,7 @@
 .searchbox i {
   font-size: 22px;
   color: #000;
+  transition: 0.5s;
 }
 .searchbox input {
   width: 230px;
@@ -40,4 +41,9 @@
   justify-content: space-between;
   background: inherit;
   border: none;
+}
+
+.searchbox button i.active,
+.searchbox .bx-spin {
+  color: #0084ff;
 }
