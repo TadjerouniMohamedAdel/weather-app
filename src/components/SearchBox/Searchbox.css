@@ -1,7 +1,15 @@
-.searchbox {
+.searchbox-container {
+  z-index: 3000;
   width: 330px;
-  height: 48px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 10px 60px;
+}
+.searchbox-container .searchbox {
+  height: 48px;
+  width: 100%;
   background: #ffffff;
   border: 1px solid #fff;
   display: flex;
@@ -15,25 +23,25 @@
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
   z-index: inherit;
 }
-.searchbox i {
+.searchbox-container .searchbox i {
   font-size: 22px;
   color: #000;
   transition: 0.5s;
 }
-.searchbox input {
+.searchbox-container .searchbox input {
   width: 230px;
   border: none;
   height: 100%;
 }
-.searchbox input:focus {
+.searchbox-container .searchbox input:focus {
   outline: none;
 }
 
-.searchbox .divider {
+.searchbox-container .searchbox .divider {
   height: 65%;
   border-left: 1px solid #ddd;
 }
-.searchbox button {
+.searchbox-container .searchbox button {
   height: 100%;
   width: 35px;
   display: flex;
@@ -43,7 +51,33 @@
   border: none;
 }
 
-.searchbox button i.active,
-.searchbox .bx-spin {
+.searchbox-container .searchbox button i.active,
+.searchbox-container .searchbox .bx-spin {
   color: #0084ff;
+}
+
+.searchbox-container ul {
+  list-style: none;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  font-size: 15px;
+  overflow: hidden;
+  width: 100%;
+}
+.searchbox-container ul li {
+  padding: 12px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+  transition: 0.5s;
+}
+.searchbox-container ul li:hover {
+  background: #eee;
+}
+.searchbox-container ul li i {
+  font-size: 18px;
+  color: #aaa;
 }

@@ -49,12 +49,8 @@ const App: React.FC = () => {
             A pretty CSS3 popup <br /> Easily customizable.
           </Popup>
         </Marker>
-        <div
-          style={{ zIndex: 30000, position: 'absolute' }}
-          className="weather-searbox"
-        >
-          <Searchbox type="text" placeholder="Search for a location" />
-        </div>
+
+        <Searchbox type="text" placeholder="Search for a location" />
       </MapContainer>
     </div>
   );
