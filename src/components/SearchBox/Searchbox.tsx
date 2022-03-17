@@ -22,6 +22,8 @@ const Searchbox: React.FC<Props> = ({ type, placeholder }) => {
   const [searchText, setSearchText] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [suggestions, setSuggestions] = React.useState<Suggestion[]>([]);
+  // const [selectedSuggestion, setSelectedSuggestion] =
+  React.useState<Suggestion | null>(null);
 
   const request = debounce((value: string) => {
     setSearchText(value);
@@ -83,9 +85,17 @@ const Searchbox: React.FC<Props> = ({ type, placeholder }) => {
       </div>
       <ul className="research-suggest">
         {suggestions.map((suggest) => (
-          <li key={suggest.properties.formatted}>
-            <i className="bx bx-map" />
-            <span>{suggest.properties.formatted}</span>
+          <li
+            // role="button"
+            key={suggest.properties.formatted}
+            // onKeyDown={() => {}}
+            // onMouseDown={() => {}}
+            // onClick={() => setSelectedSuggestion(suggest)}
+          >
+            <div>
+              <i className="bx bx-map" />
+              <span>{suggest.properties.formatted}</span>
+            </div>
           </li>
         ))}
       </ul>
